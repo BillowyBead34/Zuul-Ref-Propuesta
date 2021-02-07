@@ -110,10 +110,13 @@ public class Game {
 	}
 
 	String direction = command.getDirectionWord();
-
 	Room nextRoom = getCurrentRoom().determineNextRoom(RoomDirection.getDirection(direction));
-	setCurrentRoom(nextRoom);
-	getCurrentRoom().printExits();
+
+	if (!nextRoom.isNullRoom()) {
+	    setCurrentRoom(nextRoom);
+	    getCurrentRoom().printExits();
+	} else
+	    System.out.println("There is no door!");
     }
 
     public void quitGame(Command command) {
